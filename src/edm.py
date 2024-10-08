@@ -37,9 +37,11 @@ def plot_farm_data():
     return fig
 
 def plot_land_area():
+    data = get_data()
     fig, ax = plt.subplots(figsize=(10, 6))
-    ax.bar(data['Year'], data['PaddyField'], label='논')
-    ax.bar(data['Year'], data['Upland'], bottom=data['PaddyField'], label='밭')
+    years = data.index.year  # datetime에서 년도만 추출
+    ax.bar(years, data['PaddyField'], label='논')
+    ax.bar(years, data['Upland'], bottom=data['PaddyField'], label='밭')
     ax.set_title('경지면적 변화')
     ax.set_xlabel('연도')
     ax.set_ylabel('면적')

@@ -17,7 +17,7 @@ def load_data():
                        'fullTime+partTime', 'RiceProduction', 'PotatoesProduction']
     
     for col in numeric_columns:
-        data[col] = data[col].str.replace(',', '').astype(float)
+        data[col] = data[col].replace(',', '', regex=True).astype(float)
     
     # PM2.5 컬럼의 소수점 처리
     data['PM2.5'] = data['PM2.5'].astype(float)
